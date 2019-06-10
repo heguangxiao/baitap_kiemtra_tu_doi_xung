@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="inputPalindrome" value="" placeholder="Palindrome"/>
+<input type="button" id="check" value="Check" onclick="checkPalindrome();"/>
+<br/>
+<div id="showMessage"></div>
+
+<script>
+    let showDiv = document.getElementById('showMessage');
+    let palindrome = document.getElementById('inputPalindrome');
+    let messDiv = '';
+
+    function checkPalindrome() {
+        if (palindrome.value.length < 2 && palindrome.value.length > 0) {
+            messDiv = '1 ky tu';
+        } else if (palindrome.value.length < 4) {
+            if (btoan1(palindrome.value)){
+                messDiv = 'palindrome';
+            } else {
+                messDiv = 'not yet';
+            }
+        } else {
+            if (btoan2(palindrome.value)){
+                messDiv = 'palindrome';
+            } else {
+                messDiv = 'not yet';
+            }
+        }
+
+        showDiv.innerHTML = messDiv;
+    }
+
+    function btoan1(p) {
+        let num = p.length;
+        
+        if ( p[0] === p[num-1] ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function btoan2(p) {
+        if (btoan1(p)){
+            let arr = [];
+            let arrFlag = [];
+            for (i = 0; i < p.length; i++) {
+                arr.push(p[i]);
+            }
+
+            arr.pop();
+            arr.shift();
+
+            arrFlag = arr;
+
+            if (arrFlag.join('') == arr.reverse().join('')) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+    
+</script>
+
+</body>
+</html>
