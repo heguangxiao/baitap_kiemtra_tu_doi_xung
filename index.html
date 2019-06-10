@@ -16,15 +16,15 @@
     let messDiv = '';
 
     function checkPalindrome() {
-        if (palindrome.value.length < 2 && palindrome.value.length > 0) {
+        if (palindrome.value.length > 0 && palindrome.value.length < 2 ) {
             messDiv = '1 ky tu';
-        } else if (palindrome.value.length < 4) {
+        } else if (palindrome.value.length < 4 && palindrome.value.length > 1) {
             if (btoan1(palindrome.value)){
                 messDiv = 'palindrome';
             } else {
                 messDiv = 'not yet';
             }
-        } else {
+        } else if (palindrome.value.length > 3) {
             if (btoan2(palindrome.value)){
                 messDiv = 'palindrome';
             } else {
